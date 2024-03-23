@@ -1,8 +1,0 @@
-
-cd /opt/bitnami/redmine
-gem install  openai
-cd /opt/bitnami/redmine/plugins
-git clone  https://github.com/choiss7/redmine_gpt
-cd /opt/bitnami/redmine
-bundle install 
-
