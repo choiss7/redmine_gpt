@@ -1,5 +1,14 @@
 cd /opt/bitnami/redmine
+
 gem install  openai
+ >Fetching openai-0.3.0.gem
+ >Successfully installed openai-0.3.0
+ >Parsing documentation for openai-0.3.0
+ >Installing ri documentation for openai-0.3.0
+ >Done installing documentation for openai after 0 seconds
+ > 1 gem installed
+
+
 cd /opt/bitnami/redmine/plugins
 git clone  https://github.com/choiss7/redmine_gpt
 cd /opt/bitnami/redmine
