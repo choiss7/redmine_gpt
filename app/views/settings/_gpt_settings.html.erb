@@ -1,0 +1,12 @@
+<!-- plugins/redmine_gpt/app/views/settings/_gpt_settings.html.erb -->
+
+<p>
+  <%= text_field_tag 'settings[openai_api_key]', Setting.plugin_redmine_gpt['openai_api_key'], size: 40 %>
+  <%= label_tag 'settings[openai_api_key]', l(:field_openai_api_key) %>
+</p>
+
+<p>
+  <%= text_field_tag 'settings[gpt_model]', Setting.plugin_redmine_gpt['gpt_model'], size: 40 %>
+  <%= label_tag 'settings[gpt_model]', l(:field_gpt_model) %>
+</p>
+

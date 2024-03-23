@@ -1,0 +1,5 @@
+# English strings go here for Rails i18n
+en:
+  # my_label: "My label"
+  label_openai_api_key: "OpenAI API Key"
+  field_gpt_model: "GPT Model"

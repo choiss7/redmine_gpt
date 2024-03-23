@@ -1,0 +1,18 @@
+<!-- plugins/redmine_gpt/app/views/gpt/index.html.erb -->
+<h1>GPT-4 Prompt</h1>
+
+<%= form_with url: generate_gpt_path, method: :post do |form| %>
+  <div>
+    <%= label_tag :prompt, "Enter your prompt:" %>
+    <%= text_area_tag :prompt %>
+  </div>
+  <div>
+    <%= submit_tag "Generate" %>
+  </div>
+<% end %>
+
+<% if @response_text %>
+  <h2>Result</h2>
+  <p><%= @response_text %></p>
+<% end %>
+
