@@ -5,3 +5,5 @@ git clone  https://github.com/choiss7/redmine_gpt
 cd /opt/bitnami/redmine
 bundle install 
 
+/opt/bitnami/ctlscript restart apache 
+
