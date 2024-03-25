@@ -1,32 +1,59 @@
 <!-- plugins/redmine_gpt/app/views/gpt/index.html.erb -->
 <h1>GPT-4 Prompt</h1>
 
-<%= form_with url: generate_gpt_path, method: :post do |form| %>
-  <div>
-    <%= label_tag :prompt, "Enter your prompt:" %>
-    <%= text_area_tag :prompt %>
+<div id="chat-interface">
+  <div id="messages" style="border: 1px solid #ccc; height: 300px; overflow-y: scroll; padding: 10px; margin-bottom: 10px;">
+    <!-- 사용자와 GPT 간의 대화가 여기에 표시됩니다 -->
   </div>
-  <div>
-    <%= submit_tag "Generate" %>
-  </div>
-<% end %>
 
-<% if @response_text %>
-  <h2>Result</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Response</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @response_text.split("\n").each_with_index do |response, index| %>
-        <tr>
-          <td><%= index + 1 %></td>
-          <td><%= response %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+  <%= form_with url: generate_gpt_path, method: :post, id: "chat-form" do |form| %>
+    <div style="display: flex;">
+      <%= text_field_tag :prompt, nil, placeholder: "Enter your prompt here...", style: "flex-grow: 1; margin-right: 10px;" %>
+      <%= submit_tag "Send", style: "width: 100px;" %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const chatForm = document.getElementById("chat-form");
+    const messagesDiv = document.getElementById("messages");
+
+    chatForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const inputField = document.querySelector("input[name='prompt']");
+      const userInput = inputField.value.trim();
+
+      if (userInput) {
+        // 사용자 입력을 대화 창에 추가
+        const userMsgElement = document.createElement("div");
+        userMsgElement.textContent = "You: " + userInput;
+        messagesDiv.appendChild(userMsgElement);
+
+        // AJAX 요청을 통해 GPT에 입력 전송 및 응답 받기
+        fetch("<%= generate_gpt_path %>", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").getAttribute("content")
+          },
+          body: JSON.stringify({ prompt: userInput })
+        })
+        .then(response => response.json())
+        .then(data => {
+          // GPT의 응답을 대화 창에 추가
+          const gptResponseElement = document.createElement("div");
+          gptResponseElement.textContent = "GPT: " + data.response; // 'data.response'는 GPT 응답을 담고 있는 가정된 속성입니다.
+          messagesDiv.appendChild(gptResponseElement);
+
+          // 스크롤을 가장 아래로 이동하여 최신 메시지 표시
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        });
+
+        // 입력 필드 초기화
+        inputField.value = "";
+      }
+    });
+  });
+</script>
