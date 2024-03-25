@@ -13,6 +13,6 @@
 
 <% if @response_text %>
   <h2>Result</h2>
-  <p><%= @response_text %></p>
+  <%= simple_format(@response_text) %>
 <% end %>
 
