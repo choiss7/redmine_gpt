@@ -1,19 +1,26 @@
+<!-- plugins/redmine_gpt/app/views/gpt/index.html.erb -->
 <h1>GPT-4 Conversation</h1>
 
-<div id="conversation" style="background-color: #f3f3f3; padding: 20px; height: 300px; overflow-y: scroll; margin-bottom: 20px;">
+<div id="conversation" style="background-color: #f3f3f3; padding: 20px; height: 300px; overflow-y: scroll; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
   <% if @response_text %>
-    <div><strong>You:</strong> <%= params[:prompt] %></div>
-    <div><strong>GPT-4:</strong> <%= simple_format(@response_text) %></div>
+    <div style="margin-bottom: 20px; padding: 10px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <strong>You:</strong>
+      <div style="white-space: pre-wrap;"><%= params[:prompt] %></div>
+    </div>
+    <div style="margin-bottom: 20px; padding: 10px; background-color: #007bff; color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <strong>GPT-4:</strong>
+      <div style="white-space: pre-wrap;"><%= simple_format(@response_text) %></div>
+    </div>
   <% end %>
 </div>
 
 <%= form_with url: generate_gpt_path, method: :post, local: true do |form| %>
   <div>
-    <%= label_tag :prompt, "Enter your message:" %>
-    <%= text_area_tag :prompt, nil, placeholder: "Type your message here...", class: "form-control" %>
+    <%= label_tag :prompt, "Enter your message:", style: "display: block; margin-bottom: 5px;" %>
+    <%= text_area_tag :prompt, nil, placeholder: "Type your message here...", class: "form-control", style: "width: 100%; height: 50px; border-radius: 8px;" %>
   </div>
   <div style="margin-top: 10px;">
-    <%= submit_tag "Send", class: "btn btn-primary" %>
+    <%= submit_tag "Send", class: "btn btn-primary", style: "width: 100%; border-radius: 8px; padding: 10px 0;" %>
   </div>
 <% end %>
 
