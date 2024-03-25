@@ -13,6 +13,22 @@
 
 <% if @response_text %>
   <h2>Result</h2>
-  <%= simple_format(@response_text) %>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Prompt</th>
+        <th>Response</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @response_text.each_with_index do |response, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= response[:prompt] %></td>
+          <td><%= response[:text] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
-
