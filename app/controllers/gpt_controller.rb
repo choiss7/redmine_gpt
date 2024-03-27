@@ -3,9 +3,16 @@ require 'uri'
 require 'json'
 
 class GptController < ApplicationController
-#  unloadable
- helper :all # 모든 헬퍼를 사용할 수 있도록 설정합니다.
-  
+  before_action :find_current_user
+
+  private
+
+  def find_current_user
+    @current_user = User.current
+  end
+end
+
+
   def index
     # index 액션은 입력 폼을 렌더링합니다.
   end
