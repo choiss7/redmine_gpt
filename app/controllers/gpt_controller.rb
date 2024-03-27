@@ -10,7 +10,7 @@ class GptController < ApplicationController
   def find_current_user
     @current_user = User.current
   end
-end
+ 
 
 
   def index
