@@ -5,10 +5,6 @@ require 'json'
  
 class GptController < ApplicationController
 #  unloadable
-
-  def find_current_user
-    @current_user = User.current
-  end
  
 
 
