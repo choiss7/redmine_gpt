@@ -5,7 +5,7 @@
  
   <% if @response_text %>
     <div style="margin-bottom: 20px; padding: 10px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-      <strong>You:</strong>
+      <strong>You:</strong> <%= current_user.login %>
       <div style="white-space: pre-wrap;"><%= params[:prompt] %></div>
     </div>
     <div style="margin-bottom: 20px; padding: 10px; background-color: #007bff; color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
