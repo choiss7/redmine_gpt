@@ -1,7 +1,12 @@
 <!-- plugins/redmine_gpt/app/views/gpt/index.html.erb -->
-<h1>GPT-4 Conversation</h1>
+<h1>GPT-4</h1>
 
 <div id="conversation" style="background-color: #f3f3f3; padding: 20px; height: 300px; overflow-y: scroll; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+  <% if @selected_model %>
+    <div style="text-align: center; margin-bottom: 20px;">
+      <strong>선택한 모델:</strong> <%= @selected_model %>
+    </div>
+  <% end %>
   <% if @response_text %>
     <div style="margin-bottom: 20px; padding: 10px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
       <strong>You:</strong>
@@ -13,6 +18,10 @@
     </div>
   <% end %>
 </div>
+
+
+
+
 
 <%= form_with url: generate_gpt_path, method: :post, local: true do |form| %>
   <div>
