@@ -2,10 +2,9 @@ require 'net/http'
 require 'uri'
 require 'json'
 
+ 
 class GptController < ApplicationController
-  before_action :find_current_user
-
-  private
+#  unloadable
 
   def find_current_user
     @current_user = User.current
