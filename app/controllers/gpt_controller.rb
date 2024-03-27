@@ -12,6 +12,7 @@ class GptController < ApplicationController
 def generate
   api_key = Setting.plugin_redmine_gpt['openai_api_key'] # 설정에서 API 키 값을 불러옴
   gpt_model = params[:model] # 사용자가 선택한 모델
+  @selected_model = gpt_model == 'gpt-4' ? 'ChatGPT-4' : 'ChatGPT-3.5' # 선택된 모델 이름 설정
 
   uri = URI.parse("https://api.openai.com/v1/chat/completions")
   request = Net::HTTP::Post.new(uri)
