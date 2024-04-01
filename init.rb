@@ -1,8 +1,8 @@
 Redmine::Plugin.register :redmine_gpt do
   name 'Redmine GPT Plugin'
-  author 'choipro'
+  author 'Medialog Messaging Platform Development Team'
   description 'This is a plugin for Redmine to interact with OpenAI GPT-4 API'
-  version '0.0.1'
+  version '0.0.2'
   url 'https://github.com/choiss7/redmine_gpt'
   author_url 'https://github.com/choiss7/redmine_gpt'
 
