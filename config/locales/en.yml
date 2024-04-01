@@ -3,3 +3,6 @@ en:
   # my_label: "My label"
   label_openai_api_key: "OpenAI API Key"
   field_gpt_model: "GPT Model"
+ko:
+  label_openai_api_key: "OpenAI API 키"
+  field_gpt_model: "GPT 모델"
