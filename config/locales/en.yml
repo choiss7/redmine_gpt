@@ -6,3 +6,4 @@ en:
 ko:
   label_openai_api_key: "OpenAI API 키"
   field_gpt_model: "GPT 모델"
+  field_openai_api_key: "OpenAI API 키" 
