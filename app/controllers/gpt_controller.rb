@@ -17,6 +17,8 @@ def generate
   gpt_model = params[:model] # 사용자가 선택한 모델
   @selected_model = gpt_model == 'gpt-4' ? 'ChatGPT-4' : 'ChatGPT-3.5' # 선택된 모델 이름 설정
 
+  custom_instructions = Setting.plugin_redmine_gpt['custom_instructions'] # 사용자 정의 지침 불러옴사용자 정의 지침 추가
+
   uri = URI.parse("https://api.openai.com/v1/chat/completions")
   request = Net::HTTP::Post.new(uri)
   request.content_type = "application/json"
@@ -26,7 +28,7 @@ def generate
     "messages" => [
       {
         "role" => "system",
-        "content" => "You are a helpful assistant."
+        "content" => "You are a helpful assistant. #{custom_instructions}  # 사용자 정의 지침을 시스템 메시지에 추가"
       },
       {
         "role" => "user",
