@@ -18,6 +18,8 @@ def generate
   @selected_model = gpt_model == 'gpt-4' ? 'ChatGPT-4' : 'ChatGPT-3.5' # 선택된 모델 이름 설정
 
   custom_instructions = Setting.plugin_redmine_gpt['custom_instructions'] # 사용자 정의 지침 불러옴사용자 정의 지침 추가
+  response_style = Setting.plugin_redmine_gpt['response_style'] # 응답 스타일 설정값 불러옴
+
 
   uri = URI.parse("https://api.openai.com/v1/chat/completions")
   request = Net::HTTP::Post.new(uri)
@@ -28,7 +30,7 @@ def generate
     "messages" => [
       {
         "role" => "system",
-        "content" => "You are a helpful assistant. #{custom_instructions}  # 사용자 정의 지침을 시스템 메시지에 추가"
+        "content" => "You are a helpful assistant. #{custom_instructions} Respond in a #{response_style} style." # 응답 스타일을 시스템 메시지에 추가
       },
       {
         "role" => "user",
