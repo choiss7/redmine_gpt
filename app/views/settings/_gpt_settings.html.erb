@@ -5,4 +5,7 @@
   <%= label_tag 'settings[openai_api_key]', l(:field_openai_api_key) %>   https://platform.openai.com/api-keys
 </p>
 
-
+<p>
+  <%= text_area_tag 'settings[custom_instructions]', Setting.plugin_redmine_gpt['custom_instructions'], size: "40x5", maxlength: 1500 %>
+  <%= label_tag 'settings[custom_instructions]', l(:field_custom_instructions) %>
+</p>
