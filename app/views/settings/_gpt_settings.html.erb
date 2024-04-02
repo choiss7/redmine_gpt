@@ -9,3 +9,8 @@
   <%= text_area_tag 'settings[custom_instructions]', Setting.plugin_redmine_gpt['custom_instructions'], size: "40x5", maxlength: 1500 %>
   <%= label_tag 'settings[custom_instructions]', l(:field_custom_instructions) %>
 </p>
+
+<p>
+  <%= text_area_tag 'settings[response_style]', Setting.plugin_redmine_gpt['response_style'], size: "40x5", maxlength: 1500 %>
+  <%= label_tag 'settings[response_style]', l(:field_response_style) %>
+</p>
