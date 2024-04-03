@@ -49,7 +49,9 @@ def generate
 
  # API 응답을 로그에 기록
   @response_text = JSON.parse(response.body)["choices"].first["message"]["content"]
-  Rails.logger.info "GPT Response: #{@response_text}"
+  Rails.logger.info "User Prompt: #{params[:prompt]} , GPT Response: #{@response_text} "
+ # Rails.logger.info "GPT Response: #{@response_text}"
+  
 rescue => e
   @error = e.message
   # 오류 메시지를 로그에 기록
