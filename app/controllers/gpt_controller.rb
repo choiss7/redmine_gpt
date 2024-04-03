@@ -57,3 +57,5 @@ rescue => e
 ensure
   render :index
 end
+end
+
