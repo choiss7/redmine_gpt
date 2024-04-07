@@ -22,6 +22,7 @@ class GptController < ApplicationController
     request["Authorization"] = "Bearer #{api_key}"
     request.body = JSON.dump({
       model: selected_model,
+      stream: true,
       "messages" => [
         {
           "role" => "system",
