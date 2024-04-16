@@ -33,14 +33,11 @@
 
 <div>
   <%= label_tag :model, "모델을 선택하세요:", style: "display: block; margin-bottom: 5px;" %>
-  <% if Setting.plugin_redmine_gpt['llm_model_list'].present? %>
-    <% llm_models = Setting.plugin_redmine_gpt['llm_model_list'].split(',').map do |model_entry| %>
-      <% model_name, model_api = model_entry.strip.match(/^(.*?)\s*\((.*?)\)$/).captures %>
+  <% llm_models = Setting.plugin_redmine_gpt['llm_model_list'].to_s.split(',').map do |model_entry|
+      model_name, model_api = model_entry.strip.match(/^(.*?)\s*\((.*?)\)$/).captures
       [model_name.strip, "#{model_name.strip} (#{model_api.strip})"]
-    <% end %>
-  <% else %>
-    <% llm_models = [] %>
-  <% end %>
+    end
+  %>
   <%= select_tag :model, options_for_select(llm_models, selected: llm_models.first.try(:last)), class: "form-control", style: "width: 100%; border-radius: 8px; margin-bottom: 10px;" %>
 </div>
 
