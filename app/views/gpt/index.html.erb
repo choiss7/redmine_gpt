@@ -24,13 +24,18 @@
     <%= label_tag :prompt, "메시지를 입력하세요:", style: "display: block; margin-bottom: 5px;" %>
     <%= text_area_tag :prompt, nil, placeholder: "여기에 메시지를 입력하세요...", class: "form-control", style: "width: 100%; height: 50px; border-radius: 8px;" %>
   </div>
-  <div>
-    <%= label_tag :model, "모델을 선택하세요:", style: "display: block; margin-bottom: 5px;" %>
-    <%= select_tag :model, options_for_select([['ChatGPT-4', 'gpt-4'], ['ChatGPT-3.5', 'gpt-3.5-turbo']], 'gpt-4'), class: "form-control", style: "width: 100%; border-radius: 8px; margin-bottom: 10px;" %>
-  </div>
+
+<div>
+  <%= label_tag :model, "모델을 선택하세요:", style: "display: block; margin-bottom: 5px;" %>
+  <% llm_models = Setting.plugin_redmine_gpt['llm_model_list'].split(',') %>
+  <%= select_tag :model, options_for_select(llm_models.map { |model| [model.strip, model.strip] }, selected: llm_models.first), class: "form-control", style: "width: 100%; border-radius: 8px; margin-bottom: 10px;" %>
+</div>
+
   <div style="margin-top: 10px;">
     <%= submit_tag "전송", class: "btn btn-primary", style: "width: 100%; border-radius: 8px; padding: 10px 0;" %>
   </div>
+
+
 <% end %>
 
 
