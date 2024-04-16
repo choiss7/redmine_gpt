@@ -27,7 +27,7 @@
 
 <div>
   <%= label_tag :model, "모델을 선택하세요:", style: "display: block; margin-bottom: 5px;" %>
-  <% llm_models = Setting.plugin_redmine_gpt['llm_model_list'].split(',') %>
+  <% llm_models = Setting.plugin_redmine_gpt['llm_model_list'].present? ? Setting.plugin_redmine_gpt['llm_model_list'].split(',') : [] %>
   <%= select_tag :model, options_for_select(llm_models.map { |model| [model.strip, model.strip] }, selected: llm_models.first), class: "form-control", style: "width: 100%; border-radius: 8px; margin-bottom: 10px;" %>
 </div>
 
