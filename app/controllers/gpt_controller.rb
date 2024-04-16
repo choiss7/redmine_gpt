@@ -16,10 +16,10 @@ class GptController < ApplicationController
     # 모델 이름과 API 주소를 분리
     begin
       model_name, api_address = model_info.match(/^(.*?)\s*\((.*?)\)$/).captures
-    rescue
-      @error = "모델명 형식이 올바르지 않습니다. '모델명 (API 주소)' 형식으로 입력해주세요."
-      Rails.logger.error @error
-      render :index and return
+    #rescue
+    #  @error = "모델명 형식이 올바르지 않습니다. '모델명 (API 주소)' 형식으로 입력해주세요."
+    #  Rails.logger.error @error
+    #  render :index and return
     end
 
     @selected_model = model_name # 선택된 모델 이름 설정
