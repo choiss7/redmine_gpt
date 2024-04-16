@@ -56,12 +56,14 @@ class GptController < ApplicationController
     # API 응답을 로그에 기록
     @response_text = JSON.parse(response.body)["choices"].first["message"]["content"]
     Rails.logger.info "User Prompt: #{params[:prompt]}, Model: #{model_name}, GPT Response: #{@response_text}"
-  
+
+
   rescue => e
-    @error = e.message
-    # 오류 메시지를 로그에 기록
-    Rails.logger.error "GPT Error: #{@error}"
-  ensure
-    render :index
-  end
+  @error = e.message
+  # 오류 메시지를 로그에 기록
+  Rails.logger.error "GPT Error: #{@error}"
+ensure
+  # 에러가 있을 경우에만 index를 렌더링
+  render :index if @error.present?
+end
 end
