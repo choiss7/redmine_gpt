@@ -45,7 +45,7 @@
       [model_name.strip, "#{model_name.strip} (#{model_api.strip})"]
     end
   %>
-  <%= select_tag :model, options_for_select(llm_models, selected: llm_models.first.try(:last)), class: "form-control", style: "width: 100%; border-radius: 8px; margin-bottom: 10px;" %>
+  <%= select_tag :model , class: "form-control", style: "width: 100%; border-radius: 8px; margin-bottom: 10px;" %>
 </div>
 
   <div style="margin-top: 10px;">
