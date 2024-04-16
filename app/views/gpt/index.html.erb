@@ -7,6 +7,13 @@
   </div>
 <% end %>
 
+<% if @model_info.present? %>
+  <div>
+    <strong>입력한 모델 정보:</strong> <%= @model_info %>
+  </div>
+<% end %>
+
+
 <div id="conversation" style="background-color: #f3f3f3; padding: 20px; height: 300px; overflow-y: scroll; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
  
   <% if @response_text %>
