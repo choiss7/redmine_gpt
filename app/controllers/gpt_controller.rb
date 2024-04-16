@@ -56,8 +56,9 @@ class GptController < ApplicationController
     # API 응답을 로그에 기록
     @response_text = JSON.parse(response.body)["choices"].first["message"]["content"]
     Rails.logger.info "User Prompt: #{params[:prompt]}, Model: #{model_name}, GPT Response: #{@response_text}"
-
     Rails.logger.debug "Model Info: #{model_info}"
+    Rails.logger.debug "Response Body: #{response.body}"
+
 
   rescue => e
   @error = e.message
